@@ -36,6 +36,11 @@
 							:text="channel.topic"
 					/></span>
 					<button
+						class="mentions"
+						aria-label="Open your mentions"
+						@click="openMentions"
+					/>
+					<button
 						class="menu"
 						aria-label="Open the context menu"
 						@click="openContextMenu"
@@ -90,6 +95,7 @@
 		</div>
 		<span id="upload-progressbar" />
 		<ChatInput :network="network" :channel="channel" />
+		<Mentions />
 	</div>
 </template>
 
@@ -100,6 +106,7 @@ import MessageList from "./MessageList.vue";
 import ChatInput from "./ChatInput.vue";
 import ChatUserList from "./ChatUserList.vue";
 import SidebarToggle from "./SidebarToggle.vue";
+import Mentions from "./Mentions.vue";
 import ListBans from "./Special/ListBans.vue";
 import ListInvites from "./Special/ListInvites.vue";
 import ListChannels from "./Special/ListChannels.vue";
@@ -113,6 +120,7 @@ export default {
 		ChatInput,
 		ChatUserList,
 		SidebarToggle,
+		Mentions,
 	},
 	props: {
 		network: Object,
@@ -187,6 +195,7 @@ export default {
 				network: this.network,
 			});
 		},
+		openMentions() {},
 	},
 };
 </script>
