@@ -1,7 +1,11 @@
 <template>
 	<div
 		:id="'msg-' + message.id"
-		:class="['msg', message.type, {self: message.self, highlight: message.highlight}]"
+		:class="[
+			'msg',
+			message.type,
+			{self: message.self, highlight: message.highlight, 'previous-source': isPreviousSource},
+		]"
 		:data-from="message.from && message.from.nick"
 	>
 		<span :aria-label="message.time | localetime" class="time tooltipped tooltipped-e"
@@ -86,6 +90,7 @@ export default {
 		channel: Object,
 		network: Object,
 		keepScrollPosition: Function,
+		isPreviousSource: Boolean,
 	},
 	computed: {
 		messageTime() {
